@@ -34,8 +34,8 @@ fn run_safe(value: i32, message: &str) -> i32 {
     let other = format!("Some value: {value}");
     print(other);
 
-    if let Ok(d) = fs::read_to_string("/README.md") {
-        let message = format!("Read {} characters from README.md", d.len());
+    if let Ok(d) = fs::read_to_string("/LICENSE") {
+        let message = format!("Read {} characters from LICENSE", d.len());
         print(message);
     }
 

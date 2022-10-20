@@ -22,7 +22,7 @@ dotnet run
 Passed string: Message from host
 Hey there!!
 Some value: 2
-Read 934 characters from README.md
+Read 1070 characters from LICENSE
 Returned: 4
 ```
 
@@ -33,6 +33,6 @@ cargo run
 Wasm string      : "Passed string: Message from host"
 Wasm string      : "Hey there!!"
 Wasm string      : "Some value: 2"
-Wasm string      : "Read 934 characters from README.md"
+Wasm string      : "Read 1070 characters from LICENSE"
 Wasm returned    : 4
 ```
