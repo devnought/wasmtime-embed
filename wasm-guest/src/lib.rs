@@ -1,4 +1,4 @@
-use std::{slice, str};
+use std::{fs, slice, str};
 
 extern "C" {
     fn host_print(ptr: i32, len: i32);
@@ -33,6 +33,11 @@ fn run_safe(value: i32, message: &str) -> i32 {
 
     let other = format!("Some value: {value}");
     print(other);
+
+    if let Ok(d) = fs::read_to_string("/README.md") {
+        let message = format!("Read {} characters from README.md", d.len());
+        print(message);
+    }
 
     value * value
 }

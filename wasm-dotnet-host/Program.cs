@@ -6,7 +6,11 @@ using var module = Module.FromFile(engine, "../wasm-guest/target/wasm32-wasi/rel
 using var linker = new Linker(engine);
 using var store = new Store(engine);
 
-store.SetWasiConfiguration(new WasiConfiguration().WithInheritedStandardOutput());
+var wasiConfig = new WasiConfiguration()
+    .WithInheritedStandardOutput()
+    .WithPreopenedDirectory("../", "/");
+
+store.SetWasiConfiguration(wasiConfig);
 linker.DefineWasi();
 
 linker.Define(

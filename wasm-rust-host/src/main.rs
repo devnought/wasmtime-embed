@@ -1,14 +1,19 @@
 use std::{slice, str};
 
 use wasmtime::{Caller, Engine, Linker, Module, Store};
-use wasmtime_wasi::{WasiCtx, WasiCtxBuilder};
+use wasmtime_wasi::{ambient_authority, Dir, WasiCtx, WasiCtxBuilder};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let engine = Engine::default();
     let mut linker = Linker::new(&engine);
     wasmtime_wasi::add_to_linker(&mut linker, |s| s)?;
 
-    let wasi = WasiCtxBuilder::new().inherit_stdout().build();
+    let dir = Dir::open_ambient_dir("../", ambient_authority()).unwrap();
+    let wasi = WasiCtxBuilder::new()
+        .inherit_stdout()
+        .preopened_dir(dir, "/")
+        .unwrap()
+        .build();
     let mut store = Store::new(&engine, wasi);
 
     let module = Module::from_file(
