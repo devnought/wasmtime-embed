@@ -19,10 +19,10 @@ Execute the webassembly library from the host of your choice.
 cd wasm-dotnet-host
 dotnet run
 
-Passed string: Message from host
-Hey there!!
-Some value: 2
-Read 1070 characters from LICENSE
+Wasi was passed string: Message from host
+Wasi saysd: Hey there!!
+Wasi has some value: 2
+Wasi read 1070 characters from LICENSE
 Returned: 4
 ```
 
@@ -30,9 +30,9 @@ Returned: 4
 cd wasm-rust-host
 cargo run
 
-Wasm string      : "Passed string: Message from host"
-Wasm string      : "Hey there!!"
-Wasm string      : "Some value: 2"
-Wasm string      : "Read 1070 characters from LICENSE"
+Wasm string      : "Wasi was passed string: Message from host"
+Wasm string      : "Wasi saysd: Hey there!!"
+Wasm string      : "Wasi has some value: 2"
+Wasm string      : "Wasi read 1070 characters from LICENSE"
 Wasm returned    : 4
 ```
