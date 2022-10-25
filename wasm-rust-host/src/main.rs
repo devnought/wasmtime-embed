@@ -49,6 +49,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mem = instance.get_memory(&mut store, "memory").unwrap();
 
     mem.write(&mut store, offset, msg)?;
+    mem.write(&mut store, offset + msg.len(), &[0u8])?;
     let res = run.call(&mut store, (2, offset as i32))?;
 
     println!("Wasm returned    : {res}");

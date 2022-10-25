@@ -25,9 +25,12 @@ linker.Define(
 
 var instance = linker.Instantiate(store, module);
 var memory = instance.GetMemory("memory");
+
 var offset = 0;
 var message = "Message from host";
 memory?.WriteString(offset, message, Encoding.UTF8);
+memory?.WriteByte(offset + message.Length, 0);
+
 var run = instance.GetFunction<int, int, int>("run");
 
 if (run is null)
