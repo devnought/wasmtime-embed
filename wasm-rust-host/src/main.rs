@@ -37,7 +37,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 CStr::from_ptr(ptr_native as *const i8).to_str().unwrap()
             };
 
-            println!("Wasm string      : {wasm_string:?}");
+            println!("{wasm_string}");
         },
     )?;
 
@@ -52,7 +52,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     mem.write(&mut store, offset + msg.len(), &[0u8])?;
     let res = run.call(&mut store, (2, offset as i32))?;
 
-    println!("Wasm returned    : {res}");
+    println!("Returned: {res}");
 
     Ok(())
 }
