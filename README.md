@@ -5,11 +5,11 @@ is an example of how to pass data that's more complicated than simple
 primitive types in and out of the webassembly memory sandbox.
 
 # Running the project
-First, compile the `wasm-guest` project. This assumes `cargo-wasi` is
+First, compile the `wasi-guest` project. This assumes `cargo-wasi` is
 installed.
 
 ```
-cd wasm-guest
+cd wasi-guest
 cargo wasi build --release
 ```
 

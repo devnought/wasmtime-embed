@@ -1,7 +1,10 @@
-use std::{fs, slice, str};
+use std::{
+    ffi::{CStr, CString},
+    fs, str,
+};
 
 extern "C" {
-    fn host_print(ptr: i32, len: i32);
+    fn host_print(ptr: i32);
 }
 
 fn print<S>(message: S)
@@ -9,16 +12,16 @@ where
     S: AsRef<str>,
 {
     let message_ref = message.as_ref();
+    let ffi_message = CString::new(message_ref).unwrap();
 
     unsafe {
-        host_print(message_ref.as_ptr() as i32, message_ref.len() as i32);
+        host_print(ffi_message.as_ptr() as i32);
     }
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn run(value: i32, ptr_host: i32, len: i32) -> i32 {
-    let passed_slice = slice::from_raw_parts(ptr_host as *const u8, len as usize);
-    let passed_string = str::from_utf8_unchecked(passed_slice);
+pub unsafe extern "C" fn run(value: i32, ptr_host: i32) -> i32 {
+    let passed_string = CStr::from_ptr(ptr_host as *const i8).to_str().unwrap();
 
     run_safe(value, passed_string)
 }
