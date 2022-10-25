@@ -30,7 +30,7 @@ fn run_safe(value: i32, message: &str) -> i32 {
     print(format!("Wasi was passed string: {message}"));
 
     let marks = std::iter::repeat("!").take(value as usize);
-    let test = ["Wasi saysd: Hey there"]
+    let test = ["Wasi says: Hey there"]
         .into_iter()
         .chain(marks)
         .collect::<String>();

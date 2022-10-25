@@ -20,7 +20,7 @@ cd wasm-dotnet-host
 dotnet run
 
 Wasi was passed string: Message from host
-Wasi saysd: Hey there!!
+Wasi says: Hey there!!
 Wasi has some value: 2
 Wasi read 1070 characters from LICENSE
 Returned: 4
@@ -31,7 +31,7 @@ cd wasm-rust-host
 cargo run
 
 Wasi was passed string: Message from host
-Wasi saysd: Hey there!!
+Wasi says: Hey there!!
 Wasi has some value: 2
 Wasi read 1070 characters from LICENSE
 Returned: 4
